@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="diagnostics_subreport" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="339b98d9-d2ba-4457-9a3d-51d3113c0404">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Diagnostics" uuid="d3483c9d-4338-4259-9424-d65ba0b3e56f">
+		<field name="_THIS" class="be.nbb.demetra.reporting.sa.pojo.KeyValuePojo"/>
+	</subDataset>
+	<parameter name="diagnostics" class="java.util.List" isForPrompting="false">
+		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.sa.SaReportDataFactory.createDiagnostics()]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="191" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="25786040-6e4f-462d-94f4-10297005c8f5" mode="Opaque" x="0" y="0" width="555" height="21" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnostics]]></text>
+			</staticText>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement uuid="bcccb046-7420-463d-ac01-c01431a4a0eb" x="0" y="32" width="555" height="159"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="Diagnostics" uuid="a569ce37-0965-4c47-8a0c-aa3eb2154116">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{diagnostics})]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<keyExpression><![CDATA[$F{_THIS}.getKey()]]></keyExpression>
+					<valueExpression><![CDATA[$F{_THIS}.getValue()]]></valueExpression>
+				</pieDataset>
+				<piePlot labelFormat="{2}" legendLabelFormat="{0}">
+					<plot>
+						<seriesColor seriesOrder="0" color="#FF9933"/>
+						<seriesColor seriesOrder="1" color="#009999"/>
+						<seriesColor seriesOrder="2" color="#0EFD4B"/>
+						<seriesColor seriesOrder="3" color="#3399FF"/>
+						<seriesColor seriesOrder="4" color="#FFFF66"/>
+						<seriesColor seriesOrder="5" color="#009900"/>
+						<seriesColor seriesOrder="6" color="#FF3333"/>
+						<seriesColor seriesOrder="7" color="#C46ADE"/>
+						<seriesColor seriesOrder="8" color="#405440"/>
+						<seriesColor seriesOrder="9" color="#A71CC7"/>
+					</plot>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</title>
+</jasperReport>

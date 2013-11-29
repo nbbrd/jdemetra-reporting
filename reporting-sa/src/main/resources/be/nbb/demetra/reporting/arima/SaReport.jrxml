@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SaReport" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="39631353-2d88-4ebf-ad7d-1b9153ef37f9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\DEV\\NetbeansProjects\\Reporting\\reporting-parent\\reporting-sa\\src\\main\\resources\\be\\nbb\\demetra\\reporting\\arima\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pojo" class="be.nbb.demetra.reporting.sa.SaProcessingPojo" isForPrompting="false">
+		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.sa.SaReportDataFactory.getPojo()]]></defaultValueExpression>
+	</parameter>
+	<variable name="variable1" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="52">
+			<frame>
+				<reportElement uuid="30200617-bcf2-4b0d-a7ef-950afa7e7d61" mode="Opaque" x="-20" y="-20" width="595" height="72" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="0f93bdb2-e0b2-4bca-8c9b-980baa909490" x="20" y="20" width="341" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Seasonal Adjustment Report]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="138">
+			<staticText>
+				<reportElement uuid="4c7c121c-30db-403f-8be7-eb99637f02f8" x="0" y="5" width="245" height="25"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JDemetra+ specific information]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a24f17ef-a101-4238-9adb-f036550fe46f" x="0" y="32" width="482" height="15"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["Workspace : " + $P{pojo}.getWorkspace()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a24f17ef-a101-4238-9adb-f036550fe46f" x="0" y="47" width="482" height="15"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["Processing : " + $P{pojo}.getProcessing()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a24f17ef-a101-4238-9adb-f036550fe46f" x="0" y="62" width="482" height="15"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["Metadata : " + $P{pojo}.getMetadata()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a24f17ef-a101-4238-9adb-f036550fe46f" x="0" y="77" width="482" height="15"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["Number of series : " + $P{pojo}.getNbSeries()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a24f17ef-a101-4238-9adb-f036550fe46f" x="0" y="92" width="482" height="15"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["Number of successful estimations : " + $P{pojo}.getNbSuccEst()]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="91953b7b-5890-42b6-8d73-bbb917dd9834" stretchType="RelativeToTallestObject" x="0" y="115" width="230" height="16"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{pojo}.getSpecifications())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "specification_subreport.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="16be3fa8-5143-410d-98f4-667bce98f484" x="245" y="115" width="310" height="16"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{pojo}.getArima())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "arimamodel_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="22"/>
+		<band height="24">
+			<printWhenExpression><![CDATA[$P{pojo}.getOutliers() != null
+&&
+!$P{pojo}.getOutliers().isEmpty()]]></printWhenExpression>
+			<subreport>
+				<reportElement uuid="50de09a7-b1c9-4414-b498-b19d0591342d" stretchType="RelativeToTallestObject" x="0" y="0" width="482" height="18"/>
+				<subreportParameter name="outliersAvg">
+					<subreportParameterExpression><![CDATA[$P{pojo}.getOutliersAvg()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="outliers">
+					<subreportParameterExpression><![CDATA[$P{pojo}.getOutliers()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "outliers_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="27">
+			<subreport>
+				<reportElement uuid="931a94a8-76be-4d06-88d3-e7c1f3a09331" x="0" y="0" width="482" height="21"/>
+				<subreportParameter name="modes">
+					<subreportParameterExpression><![CDATA[$P{pojo}.getModes()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "decomposition_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="38">
+			<subreport>
+				<reportElement uuid="7826d4c0-fd8f-4dfc-9bda-c87c548296c2" x="0" y="0" width="482" height="23"/>
+				<subreportParameter name="diagnostics">
+					<subreportParameterExpression><![CDATA[$P{pojo}.getDiagnostics()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "diagnostics_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="b8d3daa8-f221-46cc-a563-3643917d6c98" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="06c2ad70-f4d8-4c5c-badf-2ece855929f0" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="37136213-325a-4a1e-9b46-cbac220ca3fd" x="0" y="4" width="284" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

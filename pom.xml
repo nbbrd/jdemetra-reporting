@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>be.nbb.demetra</groupId>
+    <artifactId>reporting-parent</artifactId>
+    <version>1.4.0</version>
+    <packaging>pom</packaging>
+    <name>Reporting - Parent</name>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.7</jdk.version>
+        <netbeans.version>RELEASE74</netbeans.version>
+        <nbdemetra.version>1.4.0</nbdemetra.version>
+    </properties>
+    
+    <repositories>
+        <repository>
+            <id>netbeans</id>
+            <name>NetBeans</name>
+            <url>http://bits.netbeans.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>netbeans-snapshot</id>
+            <name>NetBeans Snapshots</name>
+            <url>http://bits.netbeans.org/netbeans/trunk/maven-snapshot/</url>
+        </repository>
+    </repositories>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>eu.europa.ec.joinup.sat</groupId>
+                <artifactId>nbdemetra-parent</artifactId>
+                <version>${nbdemetra.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>jasper-libs</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>reporting-anomaly</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    <modules>
+        <module>jasper-libs</module>
+        <module>reporting-anomaly</module>
+    <module>reporting-sa</module>
+  </modules>
+</project>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="decomposition_subreport" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="12403c1a-7fd8-40d0-8f22-19fc02977e3d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Decomposition Modes" uuid="6fc5c5ce-06a1-454f-a5ff-4631b772805b">
+		<field name="_THIS" class="be.nbb.demetra.reporting.sa.pojo.KeyValuePojo"/>
+	</subDataset>
+	<parameter name="modes" class="java.util.List" isForPrompting="false">
+		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.sa.SaReportDataFactory.createDecompositionMode()]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="173" splitType="Stretch">
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement uuid="aecba6ac-264c-4cdc-9cd4-bd0ab83abbc1" x="0" y="32" width="555" height="141"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="Decomposition Modes" uuid="824c3f65-1535-412b-9f3a-afddfefd359b">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{modes})]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<keyExpression><![CDATA[$F{_THIS}.getKey()]]></keyExpression>
+					<valueExpression><![CDATA[$F{_THIS}.getValue()]]></valueExpression>
+				</pieDataset>
+				<piePlot labelFormat="{2}" legendLabelFormat="{0}">
+					<plot>
+						<seriesColor seriesOrder="0" color="#FF3333"/>
+						<seriesColor seriesOrder="1" color="#FFFF66"/>
+						<seriesColor seriesOrder="2" color="#3399FF"/>
+						<seriesColor seriesOrder="3" color="#009900"/>
+						<seriesColor seriesOrder="4" color="#FF9933"/>
+						<seriesColor seriesOrder="5" color="#009999"/>
+					</plot>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<staticText>
+				<reportElement uuid="25786040-6e4f-462d-94f4-10297005c8f5" mode="Opaque" x="0" y="0" width="555" height="21" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Decomposition]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

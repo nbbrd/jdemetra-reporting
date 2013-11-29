@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="checklast_anomaly_subreport" pageWidth="555" pageHeight="802" whenNoDataType="NoDataSection" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="36c424ab-b41d-406c-8e69-b992df3218b7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Relative Error" forecolor="#000000" hAlign="Right" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[Math.abs($F{relativeError}) >= $P{_ORANGE_CELLS}
+&&
+Math.abs($F{relativeError}) < $P{_RED_CELLS}]]></conditionExpression>
+			<style forecolor="#FF9900" hAlign="Right" isBold="true" isItalic="false" isUnderline="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[Math.abs($F{relativeError}) >= $P{_RED_CELLS}]]></conditionExpression>
+			<style forecolor="#FF0000" hAlign="Right" isBold="true" isItalic="false" isUnderline="false"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="_NB_CHECK_LAST" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_ORANGE_CELLS" class="java.lang.Double" isForPrompting="false">
+		<defaultValueExpression><![CDATA[1.0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_RED_CELLS" class="java.lang.Double" isForPrompting="false">
+		<defaultValueExpression><![CDATA[4.0]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="relativeError" class="java.lang.Double">
+		<fieldDescription><![CDATA[relativeError]]></fieldDescription>
+	</field>
+	<field name="period" class="java.lang.Object">
+		<fieldDescription><![CDATA[period]]></fieldDescription>
+	</field>
+	<field name="validity" class="java.lang.Object">
+		<fieldDescription><![CDATA[validity]]></fieldDescription>
+	</field>
+	<field name="absoluteError" class="java.lang.Double">
+		<fieldDescription><![CDATA[absoluteError]]></fieldDescription>
+	</field>
+	<field name="tsName" class="java.lang.String">
+		<fieldDescription><![CDATA[tsName]]></fieldDescription>
+	</field>
+	<group name="TsNameGroup">
+		<groupExpression><![CDATA[$F{tsName}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="094bd638-190d-4fe3-887c-5402f5ab6976" style="SubTitle" x="0" y="0" width="174" height="22"/>
+				<textElement/>
+				<text><![CDATA[List of anomalies]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="8254be85-1d8d-4f9f-876a-2b28dd93b0b8" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="f0691aee-3408-4dc8-a24c-e4359611c12a" x="0" y="0" width="297" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e25e286e-fbed-4471-ac4f-9a4da4550216" x="377" y="0" width="50" height="35"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Relative\nError"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="736297ab-4daa-46ea-8941-a9cc69a40854" x="302" y="0" width="70" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Period]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e25e286e-fbed-4471-ac4f-9a4da4550216" x="432" y="0" width="60" height="35"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Absolute\nError"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement uuid="57afda09-8ad7-41ac-902f-ea96431a942d" positionType="FixRelativeToBottom" x="0" y="16" width="555" height="1" printWhenGroupChanges="TsNameGroup"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField pattern="###0.000;-###0.000">
+				<reportElement uuid="7bce3c12-513f-4600-8103-f91fbe3bd327" style="Relative Error" x="377" y="0" width="50" height="16"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{relativeError}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b36135b0-eb56-44dd-9bac-b06cad1c785f" isPrintRepeatedValues="false" x="0" y="0" width="297" height="16"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tsName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="87b456dc-7a0e-4679-bedc-ec881d0228e7" x="302" y="0" width="70" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{period}.toString()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.000;-###0.000">
+				<reportElement uuid="7bce3c12-513f-4600-8103-f91fbe3bd327" x="432" y="0" width="60" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{absoluteError}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

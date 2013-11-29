@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="outliers_subreport" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="459e4dd5-32a0-4520-a495-f4dc2678551c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Outliers Avg" uuid="9ee9cf26-824e-4878-a0b7-637cced8c954">
+		<field name="_THIS" class="be.nbb.demetra.reporting.sa.pojo.KeyValuePojo"/>
+	</subDataset>
+	<subDataset name="Outliers" uuid="7d90a7fa-56ef-48f4-9013-c6266a6b2dcb">
+		<field name="_THIS" class="be.nbb.demetra.reporting.sa.pojo.KeyValuePojo"/>
+	</subDataset>
+	<parameter name="outliersAvg" class="java.util.List" isForPrompting="false">
+		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.sa.SaReportDataFactory.createOutliersAvg()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="outliers" class="java.util.List" isForPrompting="false">
+		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.sa.SaReportDataFactory.createOutliers()]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="207" splitType="Stretch">
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement uuid="e3f8f276-45e1-4378-84d8-e542050871f1" x="328" y="28" width="227" height="172"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Average by Serie"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="Outliers Avg" uuid="b12c7508-9e7f-4bfc-9fb1-becce80b2bb2">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{outliersAvg})]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<keyExpression><![CDATA[$F{_THIS}.getKey()]]></keyExpression>
+					<valueExpression><![CDATA[$F{_THIS}.getValue()]]></valueExpression>
+				</pieDataset>
+				<piePlot labelFormat="{1}" legendLabelFormat="{0}">
+					<plot>
+						<seriesColor seriesOrder="0" color="#FF3333"/>
+						<seriesColor seriesOrder="1" color="#FFFF66"/>
+						<seriesColor seriesOrder="2" color="#3399FF"/>
+						<seriesColor seriesOrder="3" color="#009900"/>
+						<seriesColor seriesOrder="4" color="#FF9933"/>
+						<seriesColor seriesOrder="5" color="#009999"/>
+					</plot>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement uuid="2b2936ff-ca53-4d60-9cc2-494248daff3d" x="0" y="28" width="226" height="172"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Relative values"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="Outliers" uuid="11ef8b82-0d05-41f8-b6f1-4b7873a171a1">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{outliers})]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<keyExpression><![CDATA[$F{_THIS}.getKey()]]></keyExpression>
+					<valueExpression><![CDATA[$F{_THIS}.getValue()]]></valueExpression>
+				</pieDataset>
+				<piePlot isShowLabels="true" isCircular="true" labelFormat="{2}" legendLabelFormat="{0}">
+					<plot>
+						<seriesColor seriesOrder="0" color="#FF3333"/>
+						<seriesColor seriesOrder="1" color="#FFFF66"/>
+						<seriesColor seriesOrder="2" color="#3399FF"/>
+						<seriesColor seriesOrder="3" color="#009900"/>
+						<seriesColor seriesOrder="4" color="#FF9933"/>
+						<seriesColor seriesOrder="5" color="#009999"/>
+					</plot>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<staticText>
+				<reportElement uuid="25786040-6e4f-462d-94f4-10297005c8f5" mode="Opaque" x="0" y="0" width="555" height="21" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Outliers]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

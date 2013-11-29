@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="checklast_invalid_subreport" pageWidth="555" pageHeight="802" whenNoDataType="NoDataSection" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="36c424ab-b41d-406c-8e69-b992df3218b7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="_ITEMS" class="java.util.List" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="tsName" class="java.lang.String">
+		<fieldDescription><![CDATA[tsName]]></fieldDescription>
+	</field>
+	<field name="validity" class="java.lang.Object">
+		<fieldDescription><![CDATA[validity]]></fieldDescription>
+	</field>
+	<group name="TsNameGroup">
+		<groupExpression><![CDATA[$F{tsName}]]></groupExpression>
+		<groupHeader>
+			<band height="17">
+				<textField>
+					<reportElement uuid="0ac107a1-c786-4af9-a9da-84c136e0edc8" x="0" y="0" width="555" height="16"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tsName}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="57afda09-8ad7-41ac-902f-ea96431a942d" positionType="FixRelativeToBottom" x="0" y="16" width="555" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="094bd638-190d-4fe3-887c-5402f5ab6976" style="SubTitle" x="0" y="0" width="174" height="22"/>
+				<textElement/>
+				<text><![CDATA[Invalid Time Series]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="8254be85-1d8d-4f9f-876a-2b28dd93b0b8" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="f0691aee-3408-4dc8-a24c-e4359611c12a" x="0" y="0" width="555" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<noData>
+		<band height="46">
+			<staticText>
+				<reportElement uuid="7084bf28-c620-49f5-bd45-3154ee594b4e" x="0" y="30" width="555" height="16"/>
+				<textElement markup="none"/>
+				<text><![CDATA[No invalid time series]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="23810687-447f-4459-9469-b590d9e0199d" style="SubTitle" x="0" y="0" width="555" height="22"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Invalid Time Series]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

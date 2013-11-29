@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CheckLastReport" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c7dd0819-96f9-4fce-a6f7-0e6c2d231654">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Relative Error1" forecolor="#000000" hAlign="Right" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[Math.abs($F{relativeError}) >= $P{_ORANGE_CELLS}
+&&
+Math.abs($F{relativeError}) < $P{_RED_CELLS}]]></conditionExpression>
+			<style forecolor="#FF9900" hAlign="Right" isBold="true" isItalic="false" isUnderline="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[Math.abs($F{relativeError}) >= $P{_RED_CELLS}]]></conditionExpression>
+			<style forecolor="#FF0000" hAlign="Right" isBold="true" isItalic="false" isUnderline="false"/>
+		</conditionalStyle>
+	</style>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<parameter name="_NB_OF_SERIES" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_NB_CHECK_LAST" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_SPECIFICATION" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["TR4"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_ORANGE_CELLS" class="java.lang.Double" isForPrompting="false">
+		<defaultValueExpression><![CDATA[1.0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_RED_CELLS" class="java.lang.Double" isForPrompting="false">
+		<defaultValueExpression><![CDATA[4.0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\DEV\\NetbeansProjects\\Reporting\\reporting-parent\\reporting-anomaly\\src\\main\\resources\\be\\nbb\\demetra\\reporting\\checklast\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_INVALID" class="java.util.List" isForPrompting="false">
+		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.anomaly.AnomalyItemFactory.getInvalid()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_EMPTY" class="java.util.List" isForPrompting="false">
+		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.anomaly.AnomalyItemFactory.getEmpty()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_SORTING" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Original order"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_NB_ANOMALY" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="_VALID" class="java.util.List" isForPrompting="false">
+		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.anomaly.AnomalyItemFactory.getValid()]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="relativeError" class="java.lang.Double">
+		<fieldDescription><![CDATA[relativeError]]></fieldDescription>
+	</field>
+	<field name="period" class="java.lang.Object">
+		<fieldDescription><![CDATA[period]]></fieldDescription>
+	</field>
+	<field name="tsName" class="java.lang.String">
+		<fieldDescription><![CDATA[tsName]]></fieldDescription>
+	</field>
+	<field name="validity" class="java.lang.Object">
+		<fieldDescription><![CDATA[validity]]></fieldDescription>
+	</field>
+	<field name="absoluteError" class="java.lang.Double">
+		<fieldDescription><![CDATA[absoluteError]]></fieldDescription>
+	</field>
+	<group name="TsNameGroup">
+		<groupExpression><![CDATA[$F{tsName}]]></groupExpression>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="233">
+			<frame>
+				<reportElement uuid="c6d792f2-9dc9-427a-ae81-b47c79396f1a" mode="Opaque" x="0" y="0" width="555" height="72" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="0eab3c3c-19e1-4cec-9b3c-c043e37867a8" x="6" y="0" width="312" height="72" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="26" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Check Last Report]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement uuid="1bebd08c-fbbd-4e1d-af29-2b93f09eabfa" x="0" y="103" width="162" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<text><![CDATA[Number of series :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d38469d8-aa18-4265-aadd-eccab592ed84" x="0" y="131" width="162" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<text><![CDATA[Number of last periods checked :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="593083df-a5a4-4ec1-8af6-2000f43d3df8" x="0" y="145" width="162" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<text><![CDATA[Specification used :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="23810687-447f-4459-9469-b590d9e0199d" style="SubTitle" x="0" y="77" width="555" height="22"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Summary]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="593083df-a5a4-4ec1-8af6-2000f43d3df8" x="0" y="159" width="162" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<text><![CDATA[Sensitivity :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e8c00de9-45e5-4ee4-9a2f-fc39ecbeebd7" x="172" y="103" width="140" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{_NB_OF_SERIES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e8c00de9-45e5-4ee4-9a2f-fc39ecbeebd7" x="172" y="131" width="140" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{_NB_CHECK_LAST}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e8c00de9-45e5-4ee4-9a2f-fc39ecbeebd7" x="172" y="145" width="140" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{_SPECIFICATION}.toString()]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement uuid="e8c00de9-45e5-4ee4-9a2f-fc39ecbeebd7" x="172" y="159" width="140" height="14" forecolor="#FF6600"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{_ORANGE_CELLS} + " and +"]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement uuid="e8c00de9-45e5-4ee4-9a2f-fc39ecbeebd7" x="172" y="173" width="140" height="14" forecolor="#FF0000"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{_RED_CELLS} + " and +"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="593083df-a5a4-4ec1-8af6-2000f43d3df8" x="0" y="187" width="162" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<text><![CDATA[Series sorted by :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e8c00de9-45e5-4ee4-9a2f-fc39ecbeebd7" x="172" y="187" width="140" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{_SORTING}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d38469d8-aa18-4265-aadd-eccab592ed84" x="0" y="117" width="162" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<text><![CDATA[Number of anomalies :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e8c00de9-45e5-4ee4-9a2f-fc39ecbeebd7" x="172" y="117" width="140" height="14"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{_NB_ANOMALY}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="30">
+			<subreport>
+				<reportElement uuid="2406f2fc-9b6e-40e0-9e60-7990d14b3156" x="0" y="0" width="555" height="17"/>
+				<subreportParameter name="_NB_CHECK_LAST">
+					<subreportParameterExpression><![CDATA[$P{_NB_CHECK_LAST}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="_ORANGE_CELLS">
+					<subreportParameterExpression><![CDATA[$P{_ORANGE_CELLS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="_RED_CELLS">
+					<subreportParameterExpression><![CDATA[$P{_RED_CELLS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{_VALID})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "checklast_anomaly_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="30">
+			<subreport>
+				<reportElement uuid="0247fb73-ca3a-4b1e-89a8-536cd91d76fc" x="0" y="0" width="555" height="17"/>
+				<subreportParameter name="_ITEMS"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{_INVALID})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "checklast_invalid_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="30">
+			<subreport>
+				<reportElement uuid="4d977989-6474-4b53-aadc-c18f1b1a8610" x="0" y="0" width="555" height="17"/>
+				<subreportParameter name="_NB_CHECK_LAST"/>
+				<subreportParameter name="_ORANGE_CELLS"/>
+				<subreportParameter name="_RED_CELLS"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{_EMPTY})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "checklast_empty_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="018d2acc-985a-4ee8-844e-4c97a595d3c0" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="cbef259a-693b-4ff9-bbbc-d30fe538a8ea" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy &apos;at&apos; HH:mm">
+				<reportElement uuid="7c0e2c38-e6b3-4355-ad0f-24d2ae046845" x="4" y="4" width="180" height="13" forecolor="#000000"/>
+				<textElement textAlignment="Left" markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
