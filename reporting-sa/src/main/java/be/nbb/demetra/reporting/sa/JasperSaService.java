@@ -228,7 +228,7 @@ public class JasperSaService implements ISaReportFactory {
             if (rslt == null) {
                 continue;
             }
-            ProcQuality q = rslt.getData("diagnostics.quality", ProcQuality.class);
+            ProcQuality q = item.getQuality();
             if (q != null) {
                 ++size;
                 Integer c = qmap.get(q);
