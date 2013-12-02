@@ -52,6 +52,7 @@ public class JasperAnomalyService implements ExportJRDataService {
                 NotifyDescriptor.QUESTION_MESSAGE,
                 null,
                 null);
+        
 
         Object retValue = DialogDisplayer.getDefault().notify(d);
 
