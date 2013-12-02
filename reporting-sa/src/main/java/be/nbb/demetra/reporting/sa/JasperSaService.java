@@ -48,7 +48,7 @@ import org.openide.util.Exceptions;
 import org.openide.util.lookup.ServiceProvider;
 
 /**
- *
+ * Service generating the Jasper report of the Sa Processing
  * @author Mats Maggi
  */
 @ServiceProvider(service = ISaReportFactory.class, position = 11)

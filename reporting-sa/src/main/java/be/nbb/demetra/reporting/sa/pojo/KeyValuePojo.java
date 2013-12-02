@@ -17,7 +17,7 @@
 package be.nbb.demetra.reporting.sa.pojo;
 
 /**
- *
+ * Object allowing the transfer of key-value data to the Jasper Report
  * @author Mats Maggi
  */
 public class KeyValuePojo {

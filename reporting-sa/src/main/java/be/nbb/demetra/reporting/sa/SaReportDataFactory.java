@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- *
+ * Factory class generating test data for SA Jasper report
  * @author Mats Maggi
  */
 public class SaReportDataFactory {
@@ -104,10 +104,10 @@ public class SaReportDataFactory {
     public static Collection createDiagnostics() {
         List<KeyValuePojo> diag = new ArrayList<KeyValuePojo>();
         
-        diag.add(new KeyValuePojo("Accepted", 0));
+        diag.add(new KeyValuePojo("Accepted", 3));
         diag.add(new KeyValuePojo("Undefined", 0));
-        diag.add(new KeyValuePojo("Error", 0));
-        diag.add(new KeyValuePojo("Severe", 8));
+        diag.add(new KeyValuePojo("Error", 1));
+        diag.add(new KeyValuePojo("Severe", 4));
         diag.add(new KeyValuePojo("Bad", 0));
         diag.add(new KeyValuePojo("Uncertain", 20));
         diag.add(new KeyValuePojo("Good", 72));

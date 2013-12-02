@@ -19,7 +19,7 @@ package be.nbb.demetra.reporting.sa;
 import java.util.Collection;
 
 /**
- *
+ * Object used to pass sa processing data to Jasper Report
  * @author Mats Maggi
  */
 public class SaProcessingPojo {
