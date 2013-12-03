@@ -61,10 +61,12 @@ public class CheckLastSortPanel extends javax.swing.JPanel {
 
         orderButtonGroup.add(ascendingRadio);
         org.openide.awt.Mnemonics.setLocalizedText(ascendingRadio, org.openide.util.NbBundle.getMessage(CheckLastSortPanel.class, "CheckLastSortPanel.ascendingRadio.text")); // NOI18N
+        ascendingRadio.setEnabled(false);
 
         orderButtonGroup.add(descendingRadio);
         descendingRadio.setSelected(true);
         org.openide.awt.Mnemonics.setLocalizedText(descendingRadio, org.openide.util.NbBundle.getMessage(CheckLastSortPanel.class, "CheckLastSortPanel.descendingRadio.text")); // NOI18N
+        descendingRadio.setEnabled(false);
 
         sortComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Relative Error", "Absolute Error", "Period" }));
         sortComboBox.addItemListener(new java.awt.event.ItemListener() {
