@@ -16,6 +16,7 @@
  */
 package be.nbb.demetra.reporting.anomaly;
 
+import ec.nbdemetra.anomalydetection.report.AnomalyPojo;
 import ec.nbdemetra.anomalydetection.AnomalyItem;
 import ec.tss.Ts;
 import ec.tss.TsFactory;
