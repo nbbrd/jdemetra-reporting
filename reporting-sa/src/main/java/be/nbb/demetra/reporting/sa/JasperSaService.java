@@ -18,7 +18,6 @@ package be.nbb.demetra.reporting.sa;
 
 import be.nbb.demetra.reporting.sa.pojo.KeyValuePojo;
 import ec.nbdemetra.sa.ISaReportFactory;
-import ec.nbdemetra.sa.reporting.ExportSaDataService;
 import ec.nbdemetra.ui.mru.SourceId;
 import ec.nbdemetra.ws.WorkspaceFactory;
 import ec.satoolkit.DecompositionMode;
@@ -102,6 +101,7 @@ public class JasperSaService implements ISaReportFactory {
     private static void createReport(Map parameters) {
         try {
             JasperPrint jasperPrint;
+            parameters.put("SUBREPORT_DIR", "be/nbb/demetra/reporting/arima/");
             InputStream in = JasperSaService.class.getClassLoader().getResourceAsStream("be/nbb/demetra/reporting/arima/SaReport.jasper");
             jasperPrint = JasperFillManager.fillReport(in, parameters, new JREmptyDataSource());
             JasperViewer.viewReport(jasperPrint, false);
