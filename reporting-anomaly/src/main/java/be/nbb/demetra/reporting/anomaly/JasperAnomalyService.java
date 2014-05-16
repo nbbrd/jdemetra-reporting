@@ -48,6 +48,7 @@ public class JasperAnomalyService implements ICheckLastReportFactory {
     public boolean createReport(Map parameters) {
         try {
             JasperPrint jasperPrint;
+            parameters.put("SUBREPORT_DIR", "be/nbb/demetra/reporting/checklast/");
             InputStream in = JasperAnomalyService.class.getClassLoader().getResourceAsStream("be/nbb/demetra/reporting/checklast/CheckLastReport.jasper");
             jasperPrint = JasperFillManager.fillReport(in, parameters, new JREmptyDataSource());
             JasperViewer.viewReport(jasperPrint, false);
