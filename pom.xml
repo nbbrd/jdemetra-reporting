@@ -3,15 +3,15 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>be.nbb.demetra</groupId>
     <artifactId>reporting-parent</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.1</version>
     <packaging>pom</packaging>
     <name>Reporting - Parent</name>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.7</jdk.version>
-        <netbeans.version>RELEASE74</netbeans.version>
-        <nbdemetra.version>1.4.0</nbdemetra.version>
+        <netbeans.version>RELEASE801</netbeans.version>
+        <nbdemetra.version>1.5.1</nbdemetra.version>
     </properties>
     
     <repositories>
