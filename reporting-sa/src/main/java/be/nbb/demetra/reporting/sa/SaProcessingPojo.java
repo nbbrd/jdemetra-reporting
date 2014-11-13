@@ -20,6 +20,7 @@ import java.util.Collection;
 
 /**
  * Object used to pass sa processing data to Jasper Report
+ *
  * @author Mats Maggi
  */
 public class SaProcessingPojo {
@@ -29,15 +30,15 @@ public class SaProcessingPojo {
     private String metadata;
     private int nbSeries;
     private int nbSuccEst;
-    
+
     private Collection specifications;
     private Collection arima;
     private Collection outliers;
     private Collection outliersAvg;
-    
+
     private Collection modes;
     private Collection diagnostics;
-    
+
     public SaProcessingPojo() {
         workspace = "Workspace-1";
         processing = "Processing_1";

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SaReport" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="39631353-2d88-4ebf-ad7d-1b9153ef37f9">
-	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["D:\\DEV\\NetbeansProjects\\Reporting\\reporting-parent\\reporting-sa\\src\\main\\resources\\be\\nbb\\demetra\\reporting\\arima\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<parameter name="pojo" class="be.nbb.demetra.reporting.sa.SaProcessingPojo" isForPrompting="false">
 		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.sa.SaReportDataFactory.getPojo()]]></defaultValueExpression>

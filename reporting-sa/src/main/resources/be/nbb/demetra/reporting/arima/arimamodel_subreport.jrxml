@@ -10,7 +10,7 @@
 	<title>
 		<band height="25" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="25786040-6e4f-462d-94f4-10297005c8f5" mode="Opaque" x="0" y="0" width="300" height="21" backcolor="#CCCCCC"/>
+				<reportElement mode="Opaque" x="0" y="0" width="300" height="21" backcolor="#CCCCCC" uuid="25786040-6e4f-462d-94f4-10297005c8f5"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -21,8 +21,7 @@
 	<detail>
 		<band height="15" splitType="Stretch">
 			<textField>
-				<reportElement uuid="8c8027a3-d63b-4a22-8aa3-3526b0c8183e" x="0" y="0" width="277" height="15"/>
-				<textElement/>
+				<reportElement x="0" y="0" width="277" height="15" uuid="8c8027a3-d63b-4a22-8aa3-3526b0c8183e"/>
 				<textFieldExpression><![CDATA[$F{_THIS}]]></textFieldExpression>
 			</textField>
 		</band>

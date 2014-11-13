@@ -23,26 +23,27 @@ import java.util.List;
 
 /**
  * Factory class generating test data for SA Jasper report
+ *
  * @author Mats Maggi
  */
 public class SaReportDataFactory {
-    
-    public static SaProcessingPojo getPojo() {        
+
+    public static SaProcessingPojo getPojo() {
         SaProcessingPojo pojo = new SaProcessingPojo();
-        
+
         pojo.setSpecifications(createSpecs());
         pojo.setArima(createArimaModel());
         pojo.setOutliers(createOutliers());
         pojo.setOutliersAvg(createOutliersAvg());
         pojo.setModes(createDecompositionMode());
         pojo.setDiagnostics(createDiagnostics());
-        
+
         return pojo;
     }
-    
+
     public static Collection createArimaModel() {
-        List<String> arima = new ArrayList<String>();
-        
+        List<String> arima = new ArrayList<>();
+
         arima.add("(0,1,1)(0,1,0)\t2%");
         arima.add("(0,1,1)(0,1,1)\t60%");
         arima.add("(0,1,1)(1,1,1)\t2%");
@@ -58,52 +59,52 @@ public class SaReportDataFactory {
         arima.add("(3,0,1)(0,1,1)\t4%");
         arima.add("(3,1,0)(1,1,1)\t2%");
         arima.add("(3,1,1)(0,1,1)\t2%");
-        
+
         return arima;
     }
-    
+
     public static Collection createSpecs() {
-        List<String> specs = new ArrayList<String>();
+        List<String> specs = new ArrayList<>();
         specs.add("TS[RSA4]\t25%");
         specs.add("TS[RSA5]\t75%");
         return specs;
     }
-    
+
     public static Collection createOutliers() {
-        List<KeyValuePojo> outliers = new ArrayList<KeyValuePojo>();
-        
+        List<KeyValuePojo> outliers = new ArrayList<>();
+
         outliers.add(new KeyValuePojo("AO", 43.97));
         outliers.add(new KeyValuePojo("LS", 35.46));
         outliers.add(new KeyValuePojo("TC", 20.57));
-        
+
         return outliers;
     }
-    
+
     public static Collection createOutliersAvg() {
-        List<KeyValuePojo> outliers = new ArrayList<KeyValuePojo>();
-        
+        List<KeyValuePojo> outliers = new ArrayList<>();
+
         outliers.add(new KeyValuePojo("All", 2.82));
         outliers.add(new KeyValuePojo("AO", 1.24));
         outliers.add(new KeyValuePojo("LS", 1));
         outliers.add(new KeyValuePojo("TC", 0.58));
-        
+
         return outliers;
     }
-    
+
     public static Collection createDecompositionMode() {
-        List<KeyValuePojo> modes = new ArrayList<KeyValuePojo>();
-        
+        List<KeyValuePojo> modes = new ArrayList<>();
+
         modes.add(new KeyValuePojo("Undefined", 0));
         modes.add(new KeyValuePojo("Additive", 2));
         modes.add(new KeyValuePojo("Multiplicative", 98));
         modes.add(new KeyValuePojo("LogAdditive", 0));
-        
+
         return modes;
     }
-    
+
     public static Collection createDiagnostics() {
-        List<KeyValuePojo> diag = new ArrayList<KeyValuePojo>();
-        
+        List<KeyValuePojo> diag = new ArrayList<>();
+
         diag.add(new KeyValuePojo("Accepted", 3));
         diag.add(new KeyValuePojo("Undefined", 0));
         diag.add(new KeyValuePojo("Error", 1));
@@ -111,7 +112,7 @@ public class SaReportDataFactory {
         diag.add(new KeyValuePojo("Bad", 0));
         diag.add(new KeyValuePojo("Uncertain", 20));
         diag.add(new KeyValuePojo("Good", 72));
-        
+
         return diag;
     }
 }

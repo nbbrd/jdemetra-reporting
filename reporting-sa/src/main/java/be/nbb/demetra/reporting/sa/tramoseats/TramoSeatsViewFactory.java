@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 National Bank of Belgium
+ * Copyright 2014 National Bank of Belgium
  *
  * Licensed under the EUPL, Version 1.1 or – as soon they will be approved 
  * by the European Commission - subsequent versions of the EUPL (the "Licence");
@@ -14,35 +14,23 @@
  * See the Licence for the specific language governing permissions and 
  * limitations under the Licence.
  */
-package be.nbb.demetra.reporting.sa.pojo;
+package be.nbb.demetra.reporting.sa.tramoseats;
+
+import ec.tss.sa.documents.TramoSeatsDocument;
+import ec.ui.view.tsprocessing.ProcDocumentItemFactory;
+import org.openide.util.lookup.ServiceProvider;
 
 /**
- * Object allowing the transfer of key-value data to the Jasper Report
+ *
  * @author Mats Maggi
  */
-public class KeyValuePojo<K, V> {
+public class TramoSeatsViewFactory {
+    
+    @ServiceProvider(service = ProcDocumentItemFactory.class, position = 100000, supersedes = {"ec.nbdemetra.tramoseats.ui.TramoSeatsViewFactory$SpecAllFactory"})
+    public static class SpecAllFactory extends SaDocumentViewFactory.SpecAllFactory<TramoSeatsDocument> {
 
-    private K key;
-    private V value;
-
-    public KeyValuePojo(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
-
-    public K getKey() {
-        return key;
-    }
-
-    public void setKey(K key) {
-        this.key = key;
-    }
-
-    public V getValue() {
-        return value;
-    }
-
-    public void setValue(V value) {
-        this.value = value;
+        public SpecAllFactory() {
+            super(TramoSeatsDocument.class);
+        }
     }
 }

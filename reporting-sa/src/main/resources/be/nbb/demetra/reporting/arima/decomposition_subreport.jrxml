@@ -16,7 +16,7 @@
 		<band height="173" splitType="Stretch">
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement uuid="aecba6ac-264c-4cdc-9cd4-bd0ab83abbc1" x="0" y="32" width="555" height="141"/>
+					<reportElement x="0" y="32" width="555" height="141" uuid="aecba6ac-264c-4cdc-9cd4-bd0ab83abbc1"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -43,7 +43,7 @@
 				</piePlot>
 			</pieChart>
 			<staticText>
-				<reportElement uuid="25786040-6e4f-462d-94f4-10297005c8f5" mode="Opaque" x="0" y="0" width="555" height="21" backcolor="#CCCCCC"/>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="21" backcolor="#CCCCCC" uuid="25786040-6e4f-462d-94f4-10297005c8f5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>

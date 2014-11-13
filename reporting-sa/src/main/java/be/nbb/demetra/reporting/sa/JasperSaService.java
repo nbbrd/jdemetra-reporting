@@ -48,13 +48,14 @@ import org.openide.util.lookup.ServiceProvider;
 
 /**
  * Service generating the Jasper report of the Sa Processing
+ *
  * @author Mats Maggi
  */
 @ServiceProvider(service = ISaReportFactory.class, position = 11)
 public class JasperSaService implements ISaReportFactory {
 
-    private static DecimalFormat pc = new DecimalFormat();
-    private static DecimalFormat dec = new DecimalFormat();
+    private static final DecimalFormat pc = new DecimalFormat();
+    private static final DecimalFormat dec = new DecimalFormat();
     private static Collection outliers;
     private static Collection outliersAvg;
 
@@ -94,7 +95,7 @@ public class JasperSaService implements ISaReportFactory {
         parameters.put("pojo", pojo);
 
         createReport(parameters);
-        
+
         return true;
     }
 
@@ -120,8 +121,8 @@ public class JasperSaService implements ISaReportFactory {
     }
 
     private static Collection getSpecs(SaProcessing processing) {
-        List<String> specs = new ArrayList<String>();
-        Map<String, Integer> mmap = new HashMap<String, Integer>();
+        List<String> specs = new ArrayList<>();
+        Map<String, Integer> mmap = new HashMap<>();
         for (SaItem item : processing) {
             String m = item.getDomainSpecification().toLongString();
             Integer c = mmap.get(m);
@@ -141,9 +142,9 @@ public class JasperSaService implements ISaReportFactory {
     }
 
     private static Collection getArimaModel(SaProcessing processing) {
-        List<String> arima = new ArrayList<String>();
+        List<String> arima = new ArrayList<>();
 
-        SortedMap<String, Integer> nmodel = new TreeMap<String, Integer>();
+        SortedMap<String, Integer> nmodel = new TreeMap<>();
         double size = 0;
         for (SaItem item : processing) {
             CompositeResults rslt = item.process();
@@ -173,8 +174,8 @@ public class JasperSaService implements ISaReportFactory {
     }
 
     private static Collection getDecompositionModes(SaProcessing processing) {
-        List<KeyValuePojo> decomp = new ArrayList<KeyValuePojo>();
-        EnumMap<DecompositionMode, Integer> mmap = new EnumMap<DecompositionMode, Integer>(DecompositionMode.class);
+        List<KeyValuePojo> decomp = new ArrayList<>();
+        EnumMap<DecompositionMode, Integer> mmap = new EnumMap<>(DecompositionMode.class);
         for (SaItem item : processing) {
             CompositeResults rslt = item.process();
             if (rslt == null) {
@@ -193,7 +194,6 @@ public class JasperSaService implements ISaReportFactory {
         }
 
         //out.write("Seas. present\t" + pc2.format(nseas / ((double) nseries)));
-
         for (DecompositionMode m : DecompositionMode.values()) {
             Integer n = mmap.get(m);
             decomp.add(new KeyValuePojo(m.name(),
@@ -219,9 +219,9 @@ public class JasperSaService implements ISaReportFactory {
     }
 
     private static Collection createDiagnostics(SaProcessing processing) {
-        List<KeyValuePojo> diag = new ArrayList<KeyValuePojo>();
+        List<KeyValuePojo> diag = new ArrayList<>();
 
-        EnumMap<ProcQuality, Integer> qmap = new EnumMap<ProcQuality, Integer>(ProcQuality.class);
+        EnumMap<ProcQuality, Integer> qmap = new EnumMap<>(ProcQuality.class);
         double size = 0;
         for (SaItem item : processing) {
             CompositeResults rslt = item.process();
@@ -252,8 +252,8 @@ public class JasperSaService implements ISaReportFactory {
     }
 
     private static void getOutliers(SaProcessing processing) {
-        outliers = new ArrayList<KeyValuePojo>();
-        outliersAvg = new ArrayList<KeyValuePojo>();
+        outliers = new ArrayList<>();
+        outliersAvg = new ArrayList<>();
 
         int ntot = 0, nao = 0, nls = 0, ntc = 0, nso = 0;
         for (SaItem item : processing) {

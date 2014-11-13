@@ -22,7 +22,7 @@
 		<band height="207" splitType="Stretch">
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement uuid="e3f8f276-45e1-4378-84d8-e542050871f1" x="328" y="28" width="227" height="172"/>
+					<reportElement x="328" y="28" width="227" height="172" uuid="e3f8f276-45e1-4378-84d8-e542050871f1"/>
 					<chartTitle>
 						<titleExpression><![CDATA["Average by Serie"]]></titleExpression>
 					</chartTitle>
@@ -52,7 +52,7 @@
 			</pieChart>
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement uuid="2b2936ff-ca53-4d60-9cc2-494248daff3d" x="0" y="28" width="226" height="172"/>
+					<reportElement x="0" y="28" width="226" height="172" uuid="2b2936ff-ca53-4d60-9cc2-494248daff3d"/>
 					<chartTitle>
 						<titleExpression><![CDATA["Relative values"]]></titleExpression>
 					</chartTitle>
@@ -81,7 +81,7 @@
 				</piePlot>
 			</pieChart>
 			<staticText>
-				<reportElement uuid="25786040-6e4f-462d-94f4-10297005c8f5" mode="Opaque" x="0" y="0" width="555" height="21" backcolor="#CCCCCC"/>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="21" backcolor="#CCCCCC" uuid="25786040-6e4f-462d-94f4-10297005c8f5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
