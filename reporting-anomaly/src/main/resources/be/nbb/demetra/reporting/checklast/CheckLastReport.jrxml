@@ -32,7 +32,7 @@ Math.abs($F{relativeError}) < $P{_RED_CELLS}]]></conditionExpression>
 		<defaultValueExpression><![CDATA[4.0]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["D:\\DEV\\NetbeansProjects\\Reporting\\reporting-parent\\reporting-anomaly\\src\\main\\resources\\be\\nbb\\demetra\\reporting\\checklast\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<parameter name="_INVALID" class="java.util.List" isForPrompting="false">
 		<defaultValueExpression><![CDATA[be.nbb.demetra.reporting.anomaly.AnomalyItemFactory.getInvalid()]]></defaultValueExpression>
