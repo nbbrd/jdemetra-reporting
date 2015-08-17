@@ -35,12 +35,10 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.export.JRHtmlExporter;
-import net.sf.jasperreports.engine.export.JRHtmlExporterParameter;
 import net.sf.jasperreports.view.JRViewer;
 
 /**
- *
+ * Example of replacement of a SA results view by a Jasper report
  * @author Mats Maggi
  */
 public class SpecAllJasperView<V extends IProcDocumentView<?>> extends DefaultItemUI<V, ISaSpecification> {
@@ -63,10 +61,7 @@ public class SpecAllJasperView<V extends IProcDocumentView<?>> extends DefaultIt
 
         JasperPrint jasper;
         try {
-            jasper = JasperFillManager.fillReport(in, new HashMap(), new JRBeanCollectionDataSource(list));
-            JRHtmlExporter exporter = new JRHtmlExporter();
-            exporter.setParameter(JRHtmlExporterParameter.JASPER_PRINT, jasper);
-            exporter.setParameter(JRHtmlExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.TRUE);
+            jasper = JasperFillManager.fillReport(in, new HashMap(), new JRBeanCollectionDataSource(list));           
             JRViewer viewer = new JRViewer(jasper);
             viewer.setZoomRatio(0.75f);
             return viewer;

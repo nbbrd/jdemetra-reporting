@@ -16,8 +16,8 @@
  */
 package be.nbb.demetra.reporting.anomaly;
 
-import ec.nbdemetra.anomalydetection.report.AnomalyPojo;
 import ec.nbdemetra.anomalydetection.AnomalyItem;
+import ec.nbdemetra.anomalydetection.report.AnomalyPojo;
 import ec.tss.Ts;
 import ec.tss.TsFactory;
 import ec.tstoolkit.modelling.arima.CheckLast;
@@ -34,9 +34,9 @@ import java.util.List;
  */
 public class AnomalyItemFactory {
     
-    private static List<AnomalyPojo> valid = new ArrayList<AnomalyPojo>();
-    private static List<AnomalyPojo> empty = new ArrayList<AnomalyPojo>();
-    private static List<AnomalyPojo> invalid = new ArrayList<AnomalyPojo>();
+    private static List<AnomalyPojo> valid = new ArrayList<>();
+    private static List<AnomalyPojo> empty = new ArrayList<>();
+    private static List<AnomalyPojo> invalid = new ArrayList<>();
 
     static {
         createBeanCollection();
@@ -59,13 +59,12 @@ public class AnomalyItemFactory {
 
     public static void createBeanCollection() {
         TramoSpecification t = TramoSpecification.TR4.clone();
-        valid = new ArrayList<AnomalyPojo>();
-        empty = new ArrayList<AnomalyPojo>();
-        invalid = new ArrayList<AnomalyPojo>();
+        valid = new ArrayList<>();
+        empty = new ArrayList<>();
+        invalid = new ArrayList<>();
 
         CheckLast c = new CheckLast(t.build());
         c.setBackCount(3);
-        TsFactory f;
 
         for (int i = 0; i < 30; i++) {
             Ts ts = TsFactory.instance.createTs("Ts number " + (i + 1), null, TsData.random(TsFrequency.Monthly));

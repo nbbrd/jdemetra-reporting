@@ -38,8 +38,10 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.export.JRHtmlExporter;
-import net.sf.jasperreports.engine.export.JRHtmlExporterParameter;
+import net.sf.jasperreports.engine.export.HtmlExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleHtmlExporterConfiguration;
+import net.sf.jasperreports.export.SimpleHtmlExporterOutput;
 
 /**
  *
@@ -73,10 +75,12 @@ public class SaDocumentViewFactory {
                     try {
                         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                         jasper = JasperFillManager.fillReport(in, new HashMap(), new JRBeanCollectionDataSource(list));
-                        JRHtmlExporter exporter = new JRHtmlExporter();
-                        exporter.setParameter(JRHtmlExporterParameter.JASPER_PRINT, jasper);
-                        exporter.setParameter(JRHtmlExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.TRUE);
-                        exporter.setParameter(JRHtmlExporterParameter.OUTPUT_STREAM, outputStream);
+
+                        HtmlExporter exporter = new HtmlExporter();
+                        exporter.setExporterInput(new SimpleExporterInput(jasper));
+                        SimpleHtmlExporterConfiguration cfg = new SimpleHtmlExporterConfiguration();
+                        exporter.setExporterOutput(new SimpleHtmlExporterOutput(outputStream));
+                        exporter.setConfiguration(cfg);
                         exporter.exportReport();
                     } catch (JRException ex) {
                         return null;
