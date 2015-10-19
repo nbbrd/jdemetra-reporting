@@ -4,7 +4,7 @@
     <parent>
         <artifactId>reporting-parent</artifactId>
         <groupId>be.nbb.demetra</groupId>
-        <version>2.0.0</version>
+        <version>2.1.0</version>
     </parent>
 
     <groupId>be.nbb.demetra</groupId>
@@ -47,7 +47,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
-                <version>3.8</version>
+                <version>3.14</version>
                 <extensions>true</extensions>
             </plugin>
 
@@ -55,7 +55,7 @@
                 <!-- NetBeans 6.9+ requires JDK 6 -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>3.2</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
@@ -65,7 +65,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.6</version>
                 <configuration>
                     <!-- to have the jar plugin pickup the nbm generated manifest -->
                     <useDefaultManifestFile>true</useDefaultManifestFile>

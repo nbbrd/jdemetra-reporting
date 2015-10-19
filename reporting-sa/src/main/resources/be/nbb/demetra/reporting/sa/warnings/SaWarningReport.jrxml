@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fad29ecc-23fa-4db7-a6a4-df6370acb71b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="MethodTextColor" forecolor="#000000" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MethodColor}.equals("Blue")]]></conditionExpression>
+			<style forecolor="#0000FF" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MethodColor}.equals("Magenta")]]></conditionExpression>
+			<style forecolor="#FF00FF" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+	</style>
+	<style name="QualityColor" forecolor="#000000">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{Quality}.equals("Error")]]></conditionExpression>
+			<style forecolor="#990000" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{Quality}.equals("Severe")]]></conditionExpression>
+			<style forecolor="#FF0000" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{Quality}.equals("Bad")]]></conditionExpression>
+			<style forecolor="#FF6666" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{Quality}.equals("Uncertain")]]></conditionExpression>
+			<style forecolor="#FF6600" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{Quality}.equals("Good")]]></conditionExpression>
+			<style forecolor="#006600" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{Quality}.equals("Accepted")]]></conditionExpression>
+			<style forecolor="#999999" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="dataset1" uuid="0e9a0126-88fc-4e63-9c0a-d1fc014358c4">
+		<parameter name="warningIcon" class="java.lang.Object" isForPrompting="false"/>
+		<field name="_THIS" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="docIcon" class="java.lang.Object" isForPrompting="false"/>
+	<parameter name="warningIcon" class="java.lang.Object" isForPrompting="false"/>
+	<field name="Name" class="java.lang.String"/>
+	<field name="Method" class="java.lang.String"/>
+	<field name="Estimation" class="java.lang.String"/>
+	<field name="Status" class="java.lang.String"/>
+	<field name="Priority" class="java.lang.String"/>
+	<field name="Quality" class="java.lang.String"/>
+	<field name="MethodColor" class="java.lang.String"/>
+	<field name="Warnings" class="java.util.List"/>
+	<field name="Svg" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<elementGroup>
+				<elementGroup>
+					<staticText>
+						<reportElement x="525" y="3" width="30" height="50" forecolor="#7FA3FB" uuid="0f54721a-48b9-4d0e-a0a3-9e2caca5435c"/>
+						<textElement>
+							<font fontName="MS PGothic" size="49" isBold="true" isItalic="true"/>
+						</textElement>
+						<text><![CDATA[+]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="395" y="0" width="26" height="45" forecolor="#7FA3FB" uuid="7adc2341-c97d-47f7-a94a-1d09e4c82e0b"/>
+						<textElement>
+							<font fontName="MS PGothic" size="45" isBold="true" isItalic="true"/>
+						</textElement>
+						<text><![CDATA[J]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="423" y="10" width="109" height="35" forecolor="#FFAF44" uuid="c872ab96-e21b-4099-8976-ee4d4d6988e7"/>
+						<textElement>
+							<font fontName="Tahoma" size="28" isBold="false" isItalic="false"/>
+						</textElement>
+						<text><![CDATA[Demetra]]></text>
+					</staticText>
+				</elementGroup>
+			</elementGroup>
+			<staticText>
+				<reportElement x="0" y="6" width="365" height="24" uuid="f0f9a4b5-2554-4505-babc-bc3070d033e1"/>
+				<textElement>
+					<font fontName="Calibri Light" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Seasonal Adjustment Processing]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="22" width="365" height="19" uuid="44a07be0-9492-480b-88ea-38ba1439e57c"/>
+				<textElement>
+					<font fontName="Calibri Light" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Warnings List]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="55" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{Warnings}.size() > 0]]></printWhenExpression>
+			<componentElement>
+				<reportElement x="0" y="37" width="555" height="18" isRemoveLineWhenBlank="true" uuid="fcaf9ad2-acf6-47c6-b0d3-f2d5acaa684a">
+					<printWhenExpression><![CDATA[$F{Warnings}.size() > 0]]></printWhenExpression>
+				</reportElement>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="dataset1" uuid="11212667-ed19-4e22-9bed-c96a489f9184">
+						<datasetParameter name="warningIcon">
+							<datasetParameterExpression><![CDATA[$P{warningIcon}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{Warnings})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="18" width="555">
+						<textField>
+							<reportElement x="58" y="1" width="440" height="16" isRemoveLineWhenBlank="true" uuid="7bbc1d2b-970f-48c6-bd51-8f9668510217"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Calibri Light"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{_THIS}]]></textFieldExpression>
+						</textField>
+						<image hAlign="Center" vAlign="Middle">
+							<reportElement x="41" y="4" width="12" height="12" isRemoveLineWhenBlank="true" uuid="305a7b3f-0059-4b5e-bcc9-a81d86c6ef7b"/>
+							<imageExpression><![CDATA[$P{warningIcon}]]></imageExpression>
+						</image>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField>
+				<reportElement mode="Opaque" x="17" y="3" width="538" height="17" forecolor="#000000" uuid="eda1e591-8fee-46df-93e0-45ed11490108"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MethodTextColor" x="27" y="20" width="110" height="16" uuid="af3f1467-c9fe-4753-adc1-152a88d8d92d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri Light" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Method}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="20" width="110" height="16" uuid="df23b307-fbe4-4afb-bdde-588277ebc39d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri Light" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Estimation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="20" width="110" height="16" uuid="9cba5ba2-e834-412e-895f-85adfc204c2b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri Light" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="QualityColor" x="372" y="20" width="110" height="16" uuid="6bfb8ef0-a6d5-455a-9ad1-333131917029"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri Light" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Quality}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="-1" y="5" width="16" height="16" uuid="7cb2c951-8306-44cf-93e6-b91fcc0fbec5"/>
+				<imageExpression><![CDATA[$P{docIcon}]]></imageExpression>
+			</image>
+		</band>
+		<band height="170">
+			<printWhenExpression><![CDATA[$F{Warnings}.size() > 0 && !$F{Svg}.isEmpty()]]></printWhenExpression>
+			<line>
+				<reportElement x="0" y="169" width="555" height="1" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="6a400b3b-a660-4e49-b70a-180d67d74a6f"/>
+			</line>
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="4" width="555" height="164" uuid="54bba9d4-eecf-4116-b7ec-16a034bed47b">
+					<printWhenExpression><![CDATA[!$F{Svg}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[net.sf.jasperreports.renderers.BatikRenderer.getInstanceFromText($F{Svg})]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="16">
+			<textField>
+				<reportElement x="0" y="0" width="511" height="16" uuid="77d47653-9217-4b76-9b2c-55b7ebb20a0d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="511" y="0" width="44" height="16" uuid="507baafe-00d0-400f-ab0e-43e3dda10307"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
