@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>be.nbb.demetra</groupId>
     <artifactId>reporting-parent</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.0-rc2</version>
     <packaging>pom</packaging>
     <name>Reporting - Parent</name>
     
@@ -11,7 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.7</jdk.version>
         <netbeans.version>RELEASE801</netbeans.version>
-        <nbdemetra.version>2.0.0</nbdemetra.version>
+        <nbdemetra.version>2.1.0</nbdemetra.version>
     </properties>
     
     <repositories>
@@ -53,6 +53,6 @@
     <modules>
         <module>jasper-libs</module>
         <module>reporting-anomaly</module>
-    <module>reporting-sa</module>
-  </modules>
+        <module>reporting-sa</module>
+    </modules>
 </project>
